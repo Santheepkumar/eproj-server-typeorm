@@ -1,5 +1,5 @@
 import { validate as classValidate } from "class-validator";
-import { User } from "../server/auth/user.entity";
+import User from "../server/auth/user.entity";
 
 const validate = (entity: User): any => {
   return classValidate(entity, { validationError: { target: false } }).then(

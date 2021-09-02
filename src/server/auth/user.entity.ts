@@ -1,27 +1,15 @@
-import { classToPlain, Exclude } from "class-transformer";
+import { Exclude } from "class-transformer";
 import { IsEmail, Length } from "class-validator";
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  BaseEntity,
-  Index,
-  CreateDateColumn,
-  UpdateDateColumn,
-  BeforeInsert,
-} from "typeorm";
+import { Entity, Column, Index, BeforeInsert } from "typeorm";
 import { generateSalt, hashPassword } from "../../utils/secure";
+import CommonEntity from "../common/CommonEntity.entity";
 
 @Entity("users")
-export class User extends BaseEntity {
+export default class User extends CommonEntity {
   constructor(user: Partial<User>) {
     super();
     Object.assign(this, user);
   }
-
-  @Exclude()
-  @PrimaryGeneratedColumn()
-  id: number;
 
   @Column()
   firstName: string;
@@ -43,19 +31,9 @@ export class User extends BaseEntity {
   @Column()
   salt: string;
 
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
-
   @BeforeInsert()
   async passwordHash() {
     this.salt = generateSalt();
     this.password = await hashPassword(this.password, this.salt);
-  }
-
-  toJSON() {
-    return classToPlain(this);
   }
 }

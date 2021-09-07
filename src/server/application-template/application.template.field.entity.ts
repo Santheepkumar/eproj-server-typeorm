@@ -13,7 +13,9 @@ export default class ApplicationTemplateField extends CommonEntity {
   //     key: "id";
   //   };
 
-  @ManyToOne(() => ApplicationTemplate, (at) => at.applicationTemplateFields)
+  @ManyToOne(() => ApplicationTemplate, (at) => at.applicationTemplateFields, {
+    onDelete: "CASCADE",
+  })
   applicationTemplate: ApplicationTemplate;
 
   @Column()

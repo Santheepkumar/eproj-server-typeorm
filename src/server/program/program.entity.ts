@@ -12,4 +12,5 @@ export default class Program extends CommonEntity {
 
   @OneToMany(() => ProgramCycle, (cycle) => cycle.program)
   programCycles: ProgramCycle[];
+ 
 }

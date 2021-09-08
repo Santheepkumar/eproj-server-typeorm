@@ -4,7 +4,7 @@ import InvalidDataError from "../../utils/error/InvalidDataError";
 import ApplicationTemplate from "./application.template.entity";
 import ApplicationTemplateField from "./application.template.field.entity";
 
-function load(applicationTemplate, req) {
+function load(applicationTemplate: ApplicationTemplate, req: Request) {
   applicationTemplate.name = req.body.name.trim();
   applicationTemplate.description = req.body.description;
   applicationTemplate.status = req.body.status;
@@ -12,14 +12,17 @@ function load(applicationTemplate, req) {
   //   applicationTemplate.updatedBy = req.user.id;
 }
 
-function loadTemplateField(applicationTemplateField, payload) {
+function loadTemplateField(
+  applicationTemplateField: ApplicationTemplateField,
+  payload: any
+) {
   applicationTemplateField.type = payload.type.trim();
   applicationTemplateField.label = payload.label.trim();
 
   if (payload.required === true || payload.required === false) {
     applicationTemplateField.required = payload.required;
   }
-  applicationTemplateField.metaDataTypeId = payload.metaDataTypeId;
+  // applicationTemplateField.metaDataTypeId = payload.metaDataTypeId;
   applicationTemplateField.order = payload.order;
 
   applicationTemplateField.updatedAt = new Date();
@@ -28,7 +31,7 @@ function loadTemplateField(applicationTemplateField, payload) {
 function create(req: Request, res: Response, next: NextFunction) {
   const reqTemplateFields = req.body.applicationTemplateFields || [];
 
-  let applicationTemplate;
+  let applicationTemplate: any;
   return ApplicationTemplate.findOne({
     where: { name: req.body.name.trim() },
   })
@@ -53,9 +56,9 @@ function create(req: Request, res: Response, next: NextFunction) {
     .then((result) => {
       applicationTemplate = result;
 
-      const promises = [];
+      const promises: any = [];
 
-      reqTemplateFields.forEach((templateField) => {
+      reqTemplateFields.forEach((templateField: any) => {
         const newField: any = {};
         loadTemplateField(newField, templateField);
         newField.createdAt = new Date();

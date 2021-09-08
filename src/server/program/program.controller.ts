@@ -58,7 +58,7 @@ function getProgramCyclesUsingProgramId(
 }
 
 function getProgramCyclesWithProgram(
-  req: Request,
+  _req: Request,
   res: Response,
   next: NextFunction
 ) {
@@ -74,13 +74,17 @@ function getProgramCyclesWithProgram(
     .catch(next);
 }
 
-function getProgramWithCycles(req: Request, res: Response, next: NextFunction) {
+function getProgramWithCycles(
+  _req: Request,
+  res: Response,
+  next: NextFunction
+) {
   Program.createQueryBuilder("programs")
     .leftJoinAndSelect("programs.programCycles", "program")
     .getMany()
     .then((programs) => {
       res.json(programs);
-    })  
+    })
     .catch(next);
 }
 

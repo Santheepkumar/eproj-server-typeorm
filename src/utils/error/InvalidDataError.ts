@@ -1,7 +1,7 @@
 class InvalidDataError extends Error {
   internal?: any;
   isOperational: boolean;
-  constructor(message, internal?) {
+  constructor(message: string, internal?: any) {
     super(message);
     this.name = this.constructor.name;
     this.message = message;

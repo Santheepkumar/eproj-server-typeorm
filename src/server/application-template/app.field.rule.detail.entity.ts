@@ -5,13 +5,13 @@ export type OperationTypes = "eq" | "ne" | "lt" | "gt" | "lte" | "gte";
 
 @Entity("app_field_rule_detail")
 export default class AppFieldRuleDetail extends CommonEntity {
-  @Column()
+  @Column({ nullable: true })
   appFieldRuleId: number;
   // references: {
   //   model: "app_field_rule";
   //   key: "id";
   // };
-  @Column()
+  @Column({ nullable: true })
   depFieldId: number;
   // references: {
   //   model: "app_field_rule";
@@ -24,7 +24,7 @@ export default class AppFieldRuleDetail extends CommonEntity {
   })
   operation: OperationTypes;
 
-  @Column({ default: false })
+  @Column("text", { array: true })
   values: string[];
 
   @Column()

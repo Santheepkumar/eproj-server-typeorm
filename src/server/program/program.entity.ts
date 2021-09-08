@@ -4,7 +4,7 @@ import ProgramCycle from "./program-cycle/program.cycle.entity";
 
 @Entity("programs")
 export default class Program extends CommonEntity {
-  @Column()
+  @Column({ nullable: true })
   title: string;
 
   @Column()

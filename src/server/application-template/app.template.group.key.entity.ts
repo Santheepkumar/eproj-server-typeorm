@@ -3,14 +3,14 @@ import CommonEntity from "../common/CommonEntity.entity";
 
 @Entity("app_template_group_key")
 export default class AppTemplateGroupKey extends CommonEntity {
-  @Column()
+  @Column({ nullable: true })
   groupId: number;
   //   references: {
   //     model: "app_template_group";
   //     key: "id";
   //   };
 
-  @Column()
+  @Column({ nullable: true })
   fieldId: number;
   // references: {
   //   model: "application_template_field";

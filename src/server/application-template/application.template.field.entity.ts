@@ -6,7 +6,7 @@ export type UiComponentTypes = "Select" | "Radio" | "Checkbox";
 
 @Entity("application_template_field")
 export default class ApplicationTemplateField extends CommonEntity {
-  @Column()
+  @Column({ nullable: true })
   applicationTemplateId: number;
   //   references: {
   //     model: "application_template";
@@ -27,7 +27,7 @@ export default class ApplicationTemplateField extends CommonEntity {
   @Column({ default: false })
   required: boolean;
 
-  @Column()
+  @Column({ nullable: true })
   order: number;
 
   //   @Column()
@@ -37,14 +37,14 @@ export default class ApplicationTemplateField extends CommonEntity {
   //     key: "id";
   //   };
 
-  @Column()
+  @Column({ nullable: true })
   sectionId: number;
   //   references: {
   //     model: "app_template_section";
   //     key: "id";
   //   };
 
-  @Column()
+  @Column({ nullable: true })
   groupId: number;
   //   references: {
   //     model: "app_template_group";
@@ -54,7 +54,7 @@ export default class ApplicationTemplateField extends CommonEntity {
   @Column({
     type: "jsonb",
     array: false,
-    // nullable: false,
+    nullable: true,
   })
   validation: JSON;
 
@@ -62,6 +62,7 @@ export default class ApplicationTemplateField extends CommonEntity {
   multipleValues: boolean;
 
   @Column({
+    nullable: true,
     type: "enum",
     enum: ["Select", "Radio", "Checkbox"],
   })

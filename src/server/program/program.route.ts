@@ -1,4 +1,5 @@
-import { router } from "../../config/express";
+import { Router } from "express";
+const router = Router();
 import {
   createProgram,
   createProgramCycle,

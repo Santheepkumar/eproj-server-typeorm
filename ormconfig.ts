@@ -1,6 +1,6 @@
 import env from "./src/config/env.config";
 
-module.exports = [
+export default [
   {
     name: "development",
     type: "postgres",

@@ -1,4 +1,5 @@
-import { router } from "../../config/express";
+import { Router } from "express";
+const router = Router();
 import authCheck from "../middlewares/authCheck";
 import { register, login, me, logout } from "./auth.controller";
 

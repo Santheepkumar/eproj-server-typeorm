@@ -45,7 +45,7 @@
     "start": "ts-node src/server.ts",
     "dev": "nodemon --exec ts-node src/server.ts",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
-    "test": "NODE_ENV=test jest"
+    "test": "jest --verbose --watch"
   },
   "jest": {
     "transform": {

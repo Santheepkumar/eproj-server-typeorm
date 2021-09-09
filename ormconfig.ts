@@ -28,7 +28,7 @@ export default [
     entities: ["src/server/**/*entity.ts"],
     migrations: ["src/migrations/**/*.ts"],
     seeds: ["src/seeders/**/*.ts"],
-    logging: true,
-    // synchronize: true,
+    // logging: true,
+    synchronize: true,
   },
 ];

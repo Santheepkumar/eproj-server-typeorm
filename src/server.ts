@@ -1,7 +1,7 @@
 import "reflect-metadata";
-import { createConnection } from "typeorm";
 import app from "./config/express";
 import env from "./config/env.config";
+import connection from "./config/connection";
 
 app.get("/api-test", (_, res) => res.send("Hello World"));
 
@@ -10,7 +10,7 @@ app.listen(PORT, async () => {
   console.log(`Server running at http://localhost:${PORT}`);
 
   try {
-    await createConnection();
+    await connection.create();
     console.log("Database connected!");
   } catch (err) {
     console.log(err);

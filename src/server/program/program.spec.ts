@@ -1,4 +1,4 @@
-import connection from "../testdb.connection";
+import connection from "../../config/connection";
 
 beforeAll(async () => {
   await connection.create();

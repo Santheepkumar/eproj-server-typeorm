@@ -43,6 +43,20 @@
     "start": "ts-node src/server.ts",
     "dev": "nodemon --exec ts-node src/server.ts",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
-    "test": "jest"
+    "test": "NODE_ENV=test jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }
